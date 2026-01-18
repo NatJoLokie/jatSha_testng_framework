@@ -4,7 +4,7 @@ import com.utility.BrowserUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MyAccountPage extends BrowserUtility {
+public final class MyAccountPage extends BrowserUtility {
 
 
     private static final By LOCATOR_VERIFY_USER_ACCOUNT_NAME = By.xpath("//a[@title='View my customer account']/span");

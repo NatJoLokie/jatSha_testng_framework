@@ -6,9 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest2 {
     public static void main(String[] args) {
-        WebDriver driver = new ChromeDriver();
+//        WebDriver driver = new ChromeDriver();
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage("firefox");
 
         String loggedInAccountName = homePage.goToLoginPage().doLoginWith("tester01@mail.com", "Next@Gen@123").getLoggedInAccountName();
 

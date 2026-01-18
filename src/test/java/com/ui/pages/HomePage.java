@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public final class HomePage extends BrowserUtility {
 
-    public HomePage(WebDriver driver) {
-        super(driver);
+    public HomePage(String browserName) {
+        super(browserName);
         goToWebSite("http://www.automationpractice.pl/index.php");
     }
 

@@ -26,11 +26,11 @@ public class LoginTest {
 //
 //        browserUtility.clickElement(locator_BtnSubmitLogin);
 
-        HomePage homePage = new HomePage(driver);
-
-        LoginPage loginPage = homePage.goToLoginPage();
-
-        loginPage.doLoginWith("tester01@mail.com", "Next@Gen@123");
+//        HomePage homePage = new HomePage(driver);
+//
+//        LoginPage loginPage = homePage.goToLoginPage();
+//
+//        loginPage.doLoginWith("tester01@mail.com", "Next@Gen@123");
 
 
 
