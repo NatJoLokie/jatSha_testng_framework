@@ -1,12 +1,12 @@
 package com.ui.pages;
 
+import com.constants.Browser;
 import com.utility.BrowserUtility;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public final class HomePage extends BrowserUtility {
 
-    public HomePage(String browserName) {
+    public HomePage(Browser browserName) {
         super(browserName);
         goToWebSite("http://www.automationpractice.pl/index.php");
     }
@@ -19,7 +19,6 @@ public final class HomePage extends BrowserUtility {
         LoginPage loginPage = new LoginPage(getDriver());
         return loginPage;
     }
-
 
 
 }

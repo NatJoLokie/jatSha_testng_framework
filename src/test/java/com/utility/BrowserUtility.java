@@ -1,5 +1,6 @@
 package com.utility;
 
+import com.constants.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +28,21 @@ public abstract class BrowserUtility {
             // Initialize FirefoxDriver
             driver = new FirefoxDriver();
         } else if (browserName.equalsIgnoreCase("edge")) {
+            // Initialize EdgeDriver
+            driver = new EdgeDriver();
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browserName);
+        }
+    }
+
+    public BrowserUtility(Browser browserName) {
+        if (browserName == Browser.CHROME) {
+            // Initialize ChromeDriver
+            driver = new ChromeDriver();
+        } else if (browserName == Browser.FIREFOX) {
+            // Initialize FirefoxDriver
+            driver = new FirefoxDriver();
+        } else if (browserName == Browser.EDGE) {
             // Initialize EdgeDriver
             driver = new EdgeDriver();
         } else {
