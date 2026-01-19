@@ -3,14 +3,17 @@ package com.ui.pages;
 import com.constants.Browser;
 import com.constants.Env;
 import com.utility.BrowserUtility;
-import com.utility.PropertiesUtility;
+import com.utility.JsonUtility;
 import org.openqa.selenium.By;
 
 public final class HomePage extends BrowserUtility {
 
     public HomePage(Browser browserName) {
         super(browserName);
-        goToWebSite(PropertiesUtility.readProperty(Env.QA, "URL"));
+//        goToWebSite(PropertiesUtility.readProperty(Env.QA, "URL"));
+        goToWebSite(JsonUtility.readJson(Env.QA));
+
+        System.out.println("Home Page: "+JsonUtility.readJson(Env.QA).toString());
     }
 
     private static final By LOCATOR_LOGIN_BTN = By.xpath("//a[@class='login']");
