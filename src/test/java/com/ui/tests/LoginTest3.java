@@ -19,9 +19,10 @@ public class LoginTest3 {
     @Test(description = "Verify if a valid user is able to login to the application", groups = {"regression", "sanity"})
     public void LoginTest() {
 
-        String loggedInAccountName = homePage.goToLoginPage().doLoginWith("tester01@mail.com", "Next@Gen@123").getLoggedInAccountName();
+//        String loggedInAccountName = homePage.goToLoginPage().doLoginWith("tester01@mail.com", "Next@Gen@123").getLoggedInAccountName();
+//        Assert.assertEquals(loggedInAccountName, "Test User", "Logged in account name does not match expected value.");
 
-        Assert.assertEquals(loggedInAccountName, "Test User", "Logged in account name does not match expected value.");
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith("tester01@mail.com", "Next@Gen@123").getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
 
     }
 

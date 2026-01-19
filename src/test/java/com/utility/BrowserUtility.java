@@ -63,13 +63,11 @@ public abstract class BrowserUtility {
     public void clickElement(By locator) {
         WebElement element = driver.findElement(locator);
         element.click();
-
     }
 
     public void enterText(By locator, String text) {
         WebElement element = driver.findElement(locator);
         element.sendKeys(text);
-
     }
 
     public String getVisibleText(By locator) {
