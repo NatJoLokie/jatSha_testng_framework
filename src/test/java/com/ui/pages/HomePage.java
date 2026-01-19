@@ -1,14 +1,16 @@
 package com.ui.pages;
 
 import com.constants.Browser;
+import com.constants.Env;
 import com.utility.BrowserUtility;
+import com.utility.PropertiesUtility;
 import org.openqa.selenium.By;
 
 public final class HomePage extends BrowserUtility {
 
     public HomePage(Browser browserName) {
         super(browserName);
-        goToWebSite("http://www.automationpractice.pl/index.php");
+        goToWebSite(PropertiesUtility.readProperty(Env.QA, "URL"));
     }
 
     private static final By LOCATOR_LOGIN_BTN = By.xpath("//a[@class='login']");
