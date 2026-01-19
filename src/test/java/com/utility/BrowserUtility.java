@@ -51,13 +51,13 @@ public abstract class BrowserUtility {
     }
 
     public void goToWebSite(String url) {
+        maximizeWindow();
         driver.get(url);
 
     }
 
-    public void maximizeWindow() {
+    private void maximizeWindow() {
         driver.manage().window().maximize();
-
     }
 
     public void clickElement(By locator) {
