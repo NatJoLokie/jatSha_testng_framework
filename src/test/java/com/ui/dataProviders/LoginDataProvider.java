@@ -3,6 +3,7 @@ package com.ui.dataProviders;
 import com.google.gson.Gson;
 import com.ui.pojo.TestData;
 import com.ui.pojo.User;
+import com.utility.CSVReaderUtility;
 import org.testng.annotations.DataProvider;
 
 import java.io.File;
@@ -22,7 +23,7 @@ public class LoginDataProvider {
         System.out.println(testDataFile);
 
         FileReader fileReader = new FileReader(testDataFile);
-        TestData testData = gson.fromJson(fileReader, TestData.class);
+        TestData testData = gson.fromJson(fileReader, TestData.class); //deserialization
 
         System.out.println(testData.toString());
 
@@ -36,7 +37,6 @@ public class LoginDataProvider {
 //                .map(user -> new Object[]{user}) // Wrap each user in an Object array
 //                .collect(Collectors.toList());
 */
-
 /*
 //        @DataProvider(name = "userData") // TestNG example
 //        public Object[][] provideData() {
@@ -45,13 +45,12 @@ public class LoginDataProvider {
 //                    .toArray(Object[][]::new); // Converting List to 2D Array is often preferred
 //        }
 */
-
-
         return dataToReturn.iterator();
     }
-//        String emailAddress = testData.getData().get(0).getEmailAddress();
-//        String password = testData.getData().get(0).getPassword();
-//
-//        System.out.println(emailAddress + "," + password);
-//    }
+
+    @DataProvider(name = "loginTestCsvDataProvider")
+    public Iterator<User> loginCsvDataProvider() {
+        return CSVReaderUtility.readCsvFile("loginData");
+    }
+
 }

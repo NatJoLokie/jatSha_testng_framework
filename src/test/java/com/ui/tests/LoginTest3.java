@@ -17,13 +17,22 @@ public class LoginTest3 {
         homePage = new HomePage(CHROME);   // Setup code if needed
     }
 
-    @Test(description = "Verify if a valid user is able to login to the application",
+    @Test(description = "Verify if a valid user is able to login to the application using Json file",
             groups = {"regression", "sanity"},
             dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginDataProvider")
     public void LoginTest(User user) {
 
 //        String loggedInAccountName = homePage.goToLoginPage().doLoginWith("tester01@mail.com", "Next@Gen@123").getLoggedInAccountName();
 //        Assert.assertEquals(loggedInAccountName, "Test User", "Logged in account name does not match expected value.");
+
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
+
+    }
+
+    @Test(description = "Verify if a valid user is able to login to the application using Csv file",
+            groups = {"regression", "sanity"},
+            dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDataProvider")
+    public void LoginTestCsv(User user) {
 
         Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
 
