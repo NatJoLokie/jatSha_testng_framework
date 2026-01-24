@@ -34,7 +34,10 @@ public class CsvDtoUtility {
                 UserDTO userDTO = new UserDTO(
                         rowData.get("emailAddress"),
                         rowData.get("password"),
-                        rowData.get("loginVerify"));
+                        rowData.get("loginVerify"),
+                        rowData
+
+                );
 
                 userDTOList.add(userDTO);
             }

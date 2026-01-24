@@ -57,7 +57,7 @@ public class LoginTest3 {
             dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDtoDataProvider")
     public void LoginTestCsvDto(UserDTO user) {
         System.out.println("Test Login Verify : " + user.getLoginVerify());
-        System.out.println("Test date of Birth : " + user.getDob());
+        System.out.println("Test date of Birth : " + user.get("dob"));
         Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Swag Labs", "Swag Labs Page not loaded");
 
     }

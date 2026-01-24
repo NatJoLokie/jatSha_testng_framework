@@ -1,23 +1,28 @@
 package com.dto;
 
+import java.util.Map;
+
 public class UserDTO {
     private String emailAddress;
     private String password;
     private String loginVerify;
 
-    private String dob;
+    private Map<String, String> additionalFileds;
 
-    public String getDob() {
-        return dob;
+    public String get(String key) {
+        return additionalFileds.get(key);
     }
 
-    public UserDTO() {
+    public boolean has(String key) {
+        return additionalFileds.containsKey(key);
     }
 
-    public UserDTO(String emailAddress, String password, String loginVerify) {
+
+    public UserDTO(String emailAddress, String password, String loginVerify, Map<String, String> additionalFileds) {
         this.emailAddress = emailAddress;
         this.password = password;
         this.loginVerify = loginVerify;
+        this.additionalFileds = additionalFileds;
     }
 
     public String getEmailAddress() {
