@@ -1,9 +1,11 @@
 package com.ui.dataProviders;
 
+import com.dto.UserDTO;
 import com.google.gson.Gson;
 import com.ui.pojo.TestData;
 import com.ui.pojo.User;
 import com.utility.CSVReaderUtility;
+import com.utility.CsvDtoUtility;
 import com.utility.ExcelReaderUtility;
 import org.testng.annotations.DataProvider;
 
@@ -57,6 +59,19 @@ public class LoginDataProvider {
     @DataProvider(name = "loginTestExcelDataProvider")
     public Iterator<User> loginExcelDataProvider() {
         return ExcelReaderUtility.readExcelFile("loginData");
+    }
+
+    @DataProvider(name = "loginTestCsvDtoDataProvider")
+    public Iterator<Object[]> userData() {
+        List<Object[]> data = new ArrayList<>();
+
+        for (UserDTO user : CsvDtoUtility.readCsvDtoUtility("loginData")) {
+            data.add(new Object[]{user});
+        }
+        System.out.println("Executing from Login Data Provider > loginTestCsvDtoDataProvider ");
+
+        return data.iterator();
+
     }
 
 

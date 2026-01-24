@@ -1,5 +1,6 @@
 package com.ui.tests;
 
+import com.dto.UserDTO;
 import com.ui.pages.HomePage;
 import com.ui.pojo.User;
 import org.testng.Assert;
@@ -7,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.constants.Browser.CHROME;
-import static com.constants.Browser.EDGE;
 
 public class LoginTest3 {
 
@@ -52,10 +52,15 @@ public class LoginTest3 {
     }
 
 
+    @Test(description = "Verify if a valid user is able to login to the application using Csv Dto file",
+            groups = {"regression", "sanity"},
+            dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDtoDataProvider")
+    public void LoginTestCsvDto(UserDTO user) {
+        System.out.println("Test Login Verify : " + user.getLoginVerify());
+        System.out.println("Test date of Birth : " + user.getDob());
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Swag Labs", "Swag Labs Page not loaded");
 
-
-
-
+    }
 
 
 }
