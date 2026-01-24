@@ -4,6 +4,16 @@ public class User {
     private String emailAddress;
     private String password;
 
+    private String dob;
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public User(String emailAddress, String password) {
         this.emailAddress = emailAddress;
         this.password = password;

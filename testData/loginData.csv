@@ -1,5 +1,2 @@
-emailAddress,password
-tester01@mail.com,Next@Gen@123
-user_test2@mail.com,Passw0rd!
-user_test3@mail.com,MySecureP@ss123
-user_test3@mail.com,AnotherP@ssw0rd
+emailAddress,password,loginVerify
+standard_user,secret_sauce,Swag Labs

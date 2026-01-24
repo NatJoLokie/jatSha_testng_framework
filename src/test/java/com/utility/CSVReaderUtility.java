@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class CSVReaderUtility {
     public static Iterator<User> readCsvFile(String CsvFileName) {
 
         File csvFile = new File(System.getProperty("user.dir") + "/testData/" + CsvFileName + ".csv");
+//        Path csvFilePath = Paths.get(System.getProperty("user.dir"), "testData", CsvFileName + ".csv");
         FileReader fileReader = null;
         CSVReader csvReader;
         String[] line;
@@ -41,7 +43,8 @@ public class CSVReaderUtility {
         } catch (CsvValidationException | IOException e) {
             e.printStackTrace();
         }
-
+//        System.out.println(userList.toString());
+        System.out.println("user list : " + Arrays.toString(userList.toArray()));
         return userList.iterator();
 
     }

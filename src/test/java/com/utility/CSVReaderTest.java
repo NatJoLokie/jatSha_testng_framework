@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CSVReaderTest {
@@ -19,7 +20,7 @@ public class CSVReaderTest {
         FileReader fileReader = null;
         CSVReader csvReader;
         String[] line;
-        List<User> userList;
+        List<User> userList = null;
         User userData;
         try {
             fileReader = new FileReader(csvFile);
@@ -40,6 +41,7 @@ public class CSVReaderTest {
         } catch (CsvValidationException | IOException e) {
             e.printStackTrace();
         }
+        System.out.println(Arrays.toString(userList.toArray()));
 
     }
 }

@@ -25,7 +25,7 @@ public class JsonUtility {
         if (environment == null) {
             throw new IllegalArgumentException("Environment not found for key: " + env.toString());
         }
-        System.out.println("Json Utility: " + environment.getUrl());
+//        System.out.println("Json Utility: " + environment.getUrl());
         return environment.getUrl();
 
     }

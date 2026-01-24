@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.constants.Browser.CHROME;
+import static com.constants.Browser.EDGE;
 
 public class LoginTest3 {
 
@@ -33,9 +34,28 @@ public class LoginTest3 {
             groups = {"regression", "sanity"},
             dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDataProvider")
     public void LoginTestCsv(User user) {
-
-        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
+        System.out.println("dob from csv : " + user.getDob());
+//        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Welcome to your account. Here you can manage all of your personal information and orders.", "User welcome message does not match expected value.");
 
     }
+
+
+    @Test(description = "Verify if a valid user is able to login to the application using Excel file",
+            groups = {"regression", "sanity"},
+            dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestExcelDataProvider")
+    public void LoginTestExcel(User user) {
+//        System.out.println("dob from csv : " + user.getDob());
+//        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Swag Labs", "Swag Labs Page not loaded");
+
+    }
+
+
+
+
+
+
+
 
 }

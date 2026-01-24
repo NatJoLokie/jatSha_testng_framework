@@ -13,14 +13,15 @@ public final class HomePage extends BrowserUtility {
 //        goToWebSite(PropertiesUtility.readProperty(Env.QA, "URL"));
         goToWebSite(JsonUtility.readJson(Env.QA));
 
-        System.out.println("Home Page: "+JsonUtility.readJson(Env.QA).toString());
+
+//        System.out.println("Home Page: "+JsonUtility.readJson(Env.QA).toString());
     }
 
-    private static final By LOCATOR_LOGIN_BTN = By.xpath("//a[@class='login']");
+    private static final By LOCATOR_LOGIN_BTN = By.id("customer_login_link");
 
 
     public LoginPage goToLoginPage() { // Page Functions --> void return type should not be used
-        clickElement(LOCATOR_LOGIN_BTN);
+//        clickElement(LOCATOR_LOGIN_BTN);
         LoginPage loginPage = new LoginPage(getDriver());
         return loginPage;
     }

@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public final class LoginPage extends BrowserUtility {
-    private static final By LOCATOR_ENTER_EMAIL_ID = By.xpath("//input[@id='email']");
-    private static final By LOCATOR_ENTER_PASSWORD = By.xpath("//input[@id='passwd']");
-    private static final By LOCATOR_SUBMIT_LOGIN_BTN = By.xpath("//button[@id='SubmitLogin']");
+    private static final By LOCATOR_ENTER_EMAIL_ID = By.xpath("//input[@id='user-name']");
+    private static final By LOCATOR_ENTER_PASSWORD = By.xpath("//input[@id='password']");
+    private static final By LOCATOR_SUBMIT_LOGIN_BTN = By.xpath("//input[@id='login-button']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
