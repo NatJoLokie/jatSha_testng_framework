@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 public final class MyAccountPage extends BrowserUtility {
 
 
-    private static final By LOCATOR_VERIFY_USER_ACCOUNT_NAME = By.xpath("//a[@title='View my customer account']/span");
+    private static final By LOCATOR_VERIFY_USER_ACCOUNT_NAME = By.xpath("//div[@id='content']/h2[contains(text(),'My Account')]");
 
-    private static final By LOCATOR_WELCOME_MESSAGE = By.xpath("//diiv[@class='app_logo']");
+    private static final By LOCATOR_WELCOME_MESSAGE = By.xpath("//div[@id='content']/h2[contains(text(),'My Account')]");
 
     public MyAccountPage(WebDriver driver) {
         super(driver);

@@ -47,18 +47,19 @@ public class LoginTest3 {
     public void LoginTestExcel(User user) {
 //        System.out.println("dob from csv : " + user.getDob());
 //        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getLoggedInAccountName(), "Next Gen Tester", "Logged in account name does not match expected value.");
-        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Swag Labs", "Swag Labs Page not loaded");
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "My Account", "My Account Page not loaded");
 
     }
 
 
     @Test(description = "Verify if a valid user is able to login to the application using Csv Dto file",
             groups = {"regression", "sanity"},
-            dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDtoDataProvider")
+            dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDtoDataProvider"
+            , retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
     public void LoginTestCsvDto(UserDTO user) {
         System.out.println("Test Login Verify : " + user.getLoginVerify());
         System.out.println("Test date of Birth : " + user.get("dob"));
-        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Swag Labs", "Swag Labs Page not loaded");
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Account", "My Account Page not loaded");
 
     }
 
