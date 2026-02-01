@@ -1,12 +1,14 @@
 package com.utility;
 
 import com.constants.Browser;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 public abstract class BrowserUtility {
     private WebDriver driver;
@@ -74,6 +76,21 @@ public abstract class BrowserUtility {
     public String getVisibleText(By locator) {
         WebElement element = driver.findElement(locator);
         return element.getText();
+    }
+
+    public String takeScreenShot(String name) {
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        File screenshotData = screenshot.getScreenshotAs(OutputType.FILE);
+        String path = System.getProperty("user.dir") + "/screenshots/" + name;
+        File screenshotFile = new File(path);
+
+        try {
+            FileUtils.copyFile(screenshotData, screenshotFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return path;
+
     }
 
 }

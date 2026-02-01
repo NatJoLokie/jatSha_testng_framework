@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.utility.ExtentReporterUtility;
 import com.utility.LoggerUtility;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
@@ -23,37 +24,38 @@ public class TestListener implements ITestListener {
         logger.info("Starting test: " + result.getMethod().getMethodName());
         logger.info("Starting test: " + result.getMethod().getDescription());
         logger.info("Starting test: " + Arrays.toString(result.getMethod().getGroups()));
-        extentTest = extentReports.createTest(result.getMethod().getMethodName());
-
+//        extentTest = extentReports.createTest(result.getMethod().getMethodName());
+        ExtentReporterUtility.createExtentTest(result.getMethod().getMethodName());
+//        extentTest = ExtentReporterUtility.getTest();
     }
 
     public void onTestSuccess(ITestResult result) {
         logger.info("Test passed: " + result.getMethod().getMethodName() + " " + "PASSED");
-        extentTest.log(Status.PASS, result.getMethod().getMethodName() + " PASSED");
+//        extentTest.log(Status.PASS, result.getMethod().getMethodName() + " PASSED");
+        ExtentReporterUtility.getTest().log(Status.PASS, result.getMethod().getMethodName() + " PASSED");
     }
 
     public void onTestFailure(ITestResult result) {
         logger.error("Test failed: " + result.getMethod().getMethodName() + " " + "FAILED");
         logger.error("Reason: " + result.getThrowable().getMessage());
-        extentTest.log(Status.FAIL, result.getMethod().getMethodName() + " FAILED");
+        ExtentReporterUtility.getTest().log(Status.FAIL, result.getMethod().getMethodName() + " FAILED");
+        ExtentReporterUtility.getTest().log(Status.FAIL, result.getThrowable().getMessage() + " FAILED");
     }
 
     public void onTestSkipped(ITestResult result) {
         logger.warn("Test skipped: " + result.getMethod().getMethodName() + " " + "SKIPPED");
-        extentTest.log(Status.SKIP, result.getMethod().getMethodName() + " SKIPPED");
+        ExtentReporterUtility.getTest().log(Status.SKIP, result.getMethod().getMethodName() + " SKIPPED");
     }
 
     public void onStart(ITestContext context) {
         logger.info("Starting test suite: ");
-
-        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "extentReport.html");
-        extentReports = new ExtentReports();
-        extentReports.attachReporter(extentSparkReporter);
+        ExtentReporterUtility.setupSparkReporter("extentReport.html");
     }
 
     public void onFinish(ITestContext context) {
         logger.info("Finished test suite: ");
-        extentReports.flush();
+//        extentReports.flush();
+        ExtentReporterUtility.flushReports();
 
     }
 
