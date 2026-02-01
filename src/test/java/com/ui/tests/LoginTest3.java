@@ -3,6 +3,8 @@ package com.ui.tests;
 import com.dto.UserDTO;
 import com.ui.pages.HomePage;
 import com.ui.pojo.User;
+import com.utility.LoggerUtility;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,6 +14,8 @@ import static com.constants.Browser.CHROME;
 public class LoginTest3 {
 
     HomePage homePage;
+    Logger logger = LoggerUtility.getLogger(this.getClass());
+
 
     @BeforeMethod(description = "Setup before each test method")
     public void setUp() {
@@ -57,9 +61,11 @@ public class LoginTest3 {
             dataProviderClass = com.ui.dataProviders.LoginDataProvider.class, dataProvider = "loginTestCsvDtoDataProvider"
             , retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
     public void LoginTestCsvDto(UserDTO user) {
+        logger.info("Started my Login Excel Test with DTO");
         System.out.println("Test Login Verify : " + user.getLoginVerify());
         System.out.println("Test date of Birth : " + user.get("dob"));
-        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Account", "My Account Page not loaded");
+        Assert.assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).verifyUserPage(), "Logeshwaran", "My Account Page not loaded");
+        logger.info("Completed my Login Excel Test with DTO");
 
     }
 

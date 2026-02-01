@@ -2,6 +2,7 @@ package com.ui.pages;
 
 import com.constants.Browser;
 import com.constants.Env;
+import com.ui.pojo.Environment;
 import com.utility.BrowserUtility;
 import com.utility.JsonUtility;
 import org.openqa.selenium.By;
@@ -11,7 +12,13 @@ public final class HomePage extends BrowserUtility {
     public HomePage(Browser browserName) {
         super(browserName);
 //        goToWebSite(PropertiesUtility.readProperty(Env.QA, "URL"));
-        goToWebSite(JsonUtility.readJson(Env.DEV));
+        Environment devEnvironmentE = JsonUtility.readJson(Env.DEV);
+        System.out.println("Debug: " + devEnvironmentE.getUrl());
+
+        String devEnvironment = JsonUtility.readJson(Env.DEV).getUrl();
+        System.out.println("Debug: " + devEnvironment);
+
+        goToWebSite(devEnvironment);
 
 
 //        System.out.println("Home Page: "+JsonUtility.readJson(Env.QA).toString());

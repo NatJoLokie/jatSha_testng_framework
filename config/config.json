@@ -1,7 +1,8 @@
 {
   "environments": {
     "DEV": {
-      "url": "https://naveenautomationlabs.com/opencart/index.php"
+      "url": "https://www.naveenautomationlabs.com/opencart/index.php",
+      "MAX_RETRY_ATTEMPT": 3
     },
     "PT": {
       "url": "http://_pt_www.automationpractice.pl/index.php"

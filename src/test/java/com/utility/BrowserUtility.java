@@ -16,7 +16,7 @@ public abstract class BrowserUtility {
     }
 
     public BrowserUtility(WebDriver driver) {
-        super();
+//        super();
         this.driver = driver;
     }
 
@@ -39,6 +39,7 @@ public abstract class BrowserUtility {
         if (browserName == Browser.CHROME) {
             // Initialize ChromeDriver
             driver = new ChromeDriver();
+            System.out.println("Chrome Browser is launched");
         } else if (browserName == Browser.FIREFOX) {
             // Initialize FirefoxDriver
             driver = new FirefoxDriver();

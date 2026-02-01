@@ -10,23 +10,25 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class JsonUtility {
-    public static String readJson(Env env) {
+    public static Environment readJson(Env env) {
 
         Gson gson = new Gson();
         File jsonFile = new File(System.getProperty("user.dir") + "\\config\\config.json");
         FileReader fileReader = null;
+        Environment environment;
+
         try {
             fileReader = new FileReader(jsonFile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         Config config = gson.fromJson(fileReader, Config.class);
-        Environment environment = config.getEnvironments().get(env.toString());
+        environment = config.getEnvironments().get(env.toString());
         if (environment == null) {
             throw new IllegalArgumentException("Environment not found for key: " + env.toString());
         }
 //        System.out.println("Json Utility: " + environment.getUrl());
-        return environment.getUrl();
+        return environment;
 
     }
 }
