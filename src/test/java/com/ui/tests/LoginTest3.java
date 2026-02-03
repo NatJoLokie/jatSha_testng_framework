@@ -11,15 +11,13 @@ import org.testng.annotations.Test;
 import static com.constants.Browser.CHROME;
 
 @Listeners({com.ui.listeners.TestListener.class})
-public class LoginTest3 {
+public class LoginTest3 extends TestBase {
 
-    HomePage homePage;
+//    HomePage homePage;
 
 
-    @BeforeMethod(description = "Setup before each test method")
-    public void setUp() {
-        homePage = new HomePage(CHROME);   // Setup code if needed
-    }
+  // Setup code if needed
+
 
     @Test(description = "Verify if a valid user is able to login to the application using Json file",
             groups = {"regression", "sanity"},
